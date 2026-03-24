@@ -1,4 +1,4 @@
-const API_KEY = "b4edce6360504887a42e1f53db21e885";
+const API_KEY = process.env.REACT_APP_API_KEY;
 
 export const getTopHeadlines = async (category = "general") => {
   const res = await fetch(
@@ -7,7 +7,7 @@ export const getTopHeadlines = async (category = "general") => {
 
   const data = await res.json();
 
-  // 🔥 Manejo real de errores de NewsAPI
+  // Manejo real de errores de NewsAPI
   if (data.status !== "ok") {
     throw new Error(data.message || "Error al obtener noticias");
   }
