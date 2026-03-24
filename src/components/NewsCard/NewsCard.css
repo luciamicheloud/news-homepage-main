@@ -1,22 +1,77 @@
 .news-card {
   background: white;
-  border-radius: 12px;
+  border-radius: 14px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  transition: transform 0.2s ease;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
 }
 
+/* 🔥 Hover moderno */
 .news-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
 }
 
-.news-card img {
+/* 📷 Imagen */
+.news-img {
   width: 100%;
   height: 180px;
   object-fit: cover;
 }
 
-.news-card h3 {
+/* 📄 Contenido */
+.news-content {
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* 🏷 Fuente */
+.news-source {
+  font-size: 0.75rem;
+  color: #2563eb;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* 📰 Título */
+.news-title {
   font-size: 1rem;
-  padding: 10px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+/* 📝 Descripción */
+.news-description {
+  font-size: 0.85rem;
+  color: #555;
+}
+
+/* 🔗 Link */
+.read-more {
+  margin-top: auto;
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: #2563eb;
+}
+
+/* 📱 Tablet */
+@media (min-width: 768px) {
+  .news-img {
+    height: 200px;
+  }
+
+  .news-title {
+    font-size: 1.1rem;
+  }
+}
+
+/* 🖥 Desktop */
+@media (min-width: 1024px) {
+  .news-img {
+    height: 220px;
+  }
 }

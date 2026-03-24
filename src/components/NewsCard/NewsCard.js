@@ -8,7 +8,6 @@ const NewsCard = ({ article }) => {
     urlToImage,
     source,
     url,
-    publishedAt,
   } = article;
 
   const imageFallback =
@@ -23,26 +22,26 @@ const NewsCard = ({ article }) => {
       />
 
       <div className="news-content">
+        <span className="news-source">
+          {source?.name || "Unknown"}
+        </span>
+
         <h3 className="news-title">{title}</h3>
 
         {description && (
-          <p className="news-description">{description}</p>
+          <p className="news-description">
+            {description}
+          </p>
         )}
 
-        <div className="news-footer">
-          <span className="news-source">
-            {source?.name || "Unknown"}
-          </span>
-
-          <a
-            href={url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="read-more"
-          >
-            Leer más →
-          </a>
-        </div>
+        <a
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="read-more"
+        >
+          Leer más →
+        </a>
       </div>
     </article>
   );

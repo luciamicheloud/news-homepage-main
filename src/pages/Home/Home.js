@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../../components/Navbar/Navbar";
+import Hero from "../../components/Hero/Hero";
 import NewsGrid from "../../components/NewsGrid/NewsGrid";
+import SkeletonGrid from "../../components/SkeletonGrid/SkeletonGrid";
 import Loader from "../../components/Loader/Loader";
 import { getTopHeadlines } from "../../services/newsApi";
 
@@ -31,21 +33,27 @@ const Home = () => {
   }, []);
 
   return (
-    <div>
-      <Navbar
-        onCategoryChange={fetchNews}
-        activeCategory={category}
-      />
+  <div className="container">
+    <Navbar
+      onCategoryChange={fetchNews}
+      activeCategory={category}
+    />
 
-      {loading && <Loader />}
+    {loading && articles.length === 0 && <SkeletonGrid />}
 
-      {error && <p style={{ textAlign: "center" }}>{error}</p>}
+    {error && <p style={{ textAlign: "center" }}>{error}</p>}
 
-      {!loading && !error && (
-        <NewsGrid articles={articles} />
-      )}
-    </div>
-  );
+    {!loading && !error && (
+      <>
+        {/* 🔥 HERO */}
+        <Hero article={articles[0]} />
+
+        {/* 🔥 GRID SIN LA PRIMERA */}
+        <NewsGrid articles={articles.slice(1)} />
+      </>
+    )}
+  </div>
+);
 };
 
 export default Home;
