@@ -14,3 +14,19 @@ export const getTopHeadlines = async (category = "general") => {
 
   return data.articles || [];
 };
+
+export const searchNews = async (query) => {
+  const API_KEY = process.env.REACT_APP_API_KEY;
+
+  const res = await fetch(
+    `https://newsapi.org/v2/everything?q=${query}&language=es&sortBy=publishedAt&apiKey=${API_KEY}`
+  );
+
+  const data = await res.json();
+
+  if (data.status !== "ok") {
+    throw new Error(data.message || "Error al buscar noticias");
+  }
+
+  return data.articles || [];
+};
