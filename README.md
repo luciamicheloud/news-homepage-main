@@ -21,4 +21,6 @@ Aplicación de noticias moderna desarrollada con React.
 
 git clone ...
 npm install
-npm start
+npm start 
+
+(will need your own api key)
